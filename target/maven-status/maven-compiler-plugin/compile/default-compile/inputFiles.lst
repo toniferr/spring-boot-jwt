@@ -1,0 +1,9 @@
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\controllers\ClienteController.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\util\paginator\PageRender.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\models\dao\IClienteDao.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\models\service\IClienteService.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\models\service\ClienteServiceImpl.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\models\entity\Cliente.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\MvcConfig.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\util\paginator\PageItem.java
+C:\SpringBoot\workspace\spring-boot-data-jpa\src\main\java\com\bolsadeideas\springboot\app\SpringBootDataJpaApplication.java
