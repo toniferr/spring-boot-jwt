@@ -17,8 +17,8 @@ import com.toni.springboot.app.models.service.JpaUserDetailsService;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
-	@Autowired
-	private LoginSuccessHandler successHandler;
+	//@Autowired
+	//private LoginSuccessHandler successHandler;
 	
 	@Autowired
 	private JpaUserDetailsService userDetailsService;
