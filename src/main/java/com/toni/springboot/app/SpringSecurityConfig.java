@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.toni.springboot.app.auth.handler.LoginSuccessHandler;
 import com.toni.springboot.app.auth.handler.filter.JWTAuthenticationFilter;
+import com.toni.springboot.app.auth.handler.filter.JWTAuthorizationFilter;
 import com.toni.springboot.app.models.service.JpaUserDetailsService;
 
 @EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
@@ -40,6 +40,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.logout().permitAll()*/
 		.and()
 		.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+		.addFilter(new JWTAuthorizationFilter(authenticationManager()))
 		.exceptionHandling().accessDeniedPage("/error_403")
 		.and()
 		.csrf().disable()

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,6 @@ import com.toni.springboot.app.models.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 
@@ -93,7 +93,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		.signWith(SignatureAlgorithm.HS512, "Alguna.Clave.Secreta.12345".getBytes())
 		.compact();*/
 		
-		SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+		SecretKey secretKey = new SecretKeySpec("alguna.clave.secreta.12345".getBytes(), SignatureAlgorithm.HS512.getJcaName());
+		//SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 		
         String token = Jwts.builder()
         				.setClaims(claims)
