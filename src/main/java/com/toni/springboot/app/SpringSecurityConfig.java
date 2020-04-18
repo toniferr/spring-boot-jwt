@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.toni.springboot.app.auth.handler.filter.JWTAuthenticationFilter;
 import com.toni.springboot.app.auth.handler.filter.JWTAuthorizationFilter;
+import com.toni.springboot.app.auth.service.JwtService;
 import com.toni.springboot.app.models.service.JpaUserDetailsService;
 
 @EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
@@ -26,10 +27,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private JwtService jwtService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar", "/locale").permitAll()
+		http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar**", "/locale").permitAll()
 		.anyRequest().authenticated()
 		/*.and()
 		    .formLogin()
@@ -39,8 +43,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.and()
 		.logout().permitAll()*/
 		.and()
-		.addFilter(new JWTAuthenticationFilter(authenticationManager()))
-		.addFilter(new JWTAuthorizationFilter(authenticationManager()))
+		.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtService))
+		.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtService))
 		.exceptionHandling().accessDeniedPage("/error_403")
 		.and()
 		.csrf().disable()
